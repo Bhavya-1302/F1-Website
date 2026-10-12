@@ -1,0 +1,570 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>APEX F1 — Formula 1 World Championship Experience</title>
+  <meta name="description" content="Explore official Formula 1 teams, drivers, track layouts, and world championship standings in a high-octane black and red racing design.">
+  
+  <!-- Google Fonts: Barlow & JetBrains Mono -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Barlow:ital,wght@0,300;0,400;0,600;0,700;0,800;0,900;1,800&family=JetBrains+Mono:wght@400;700;800&display=swap" rel="stylesheet">
+  
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+  <!-- ========================================================================
+       SITE HEADER / TOP NAVIGATION
+       ======================================================================== -->
+  <header class="site-header">
+    <div class="container nav-container">
+      <!-- Official F1 Vector Logo -->
+      <a href="#hero" class="brand-link" aria-label="APEX Formula 1">
+        <svg class="f1-logo-icon" viewBox="0 0 1600 400" xmlns="http://www.w3.org/2000/svg" role="img">
+          <title>Formula 1</title>
+          <path d="M1367.21 312.501C1379.83 312.501 1390.25 316.71 1398.5 325.168C1406.75 333.626 1410.88 344.001 1410.88 356.334C1410.88 368.667 1406.79 379.043 1398.58 387.418C1390.38 395.793 1380 400.001 1367.38 400.001C1354.75 400.001 1344.25 395.792 1335.92 387.334C1327.54 378.876 1323.38 368.501 1323.38 356.168C1323.38 343.835 1327.54 333.459 1335.83 325.084C1344.13 316.709 1354.59 312.501 1367.21 312.501ZM1167.04 149.792H635.292C501.959 149.792 473.584 160.083 403.667 227.875H403.708L226.292 400H0L281.542 120.583C386.208 17 436.667 0 615.125 0H1320.04L1167.04 149.792ZM1144.21 173.708L1003.96 313.958H641.125C574.625 313.958 559.917 317.083 526.917 350.083L477 400H267.167L422.292 244.875C483.209 184 504.209 173.708 638.5 173.708H1144.21ZM1600 0L1198.92 400H950.875L1350.88 0H1600Z"/>
+        </svg>
+        <span class="brand-badge"><span>APEX 2026</span></span>
+      </a>
+
+      <!-- Main Navigation Links -->
+      <nav class="main-nav">
+        <a href="#standings" class="nav-link">🏆 Standings</a>
+        <a href="#teams" class="nav-link">🏁 Teams & Cars</a>
+        <a href="#drivers" class="nav-link">🏎️ Drivers</a>
+        <a href="#tracks" class="nav-link">🗺️ Circuit Layouts</a>
+        <a href="#tools" class="nav-link">⚡ Pit Tools</a>
+      </nav>
+
+      <!-- Header Actions: Sound FX & Mobile Toggle -->
+      <div class="header-actions">
+        <button type="button" class="btn-audio-toggle" id="audioToggleBtn" title="Toggle authentic F1 V6 Hybrid Engine and Radio FX">
+          <div class="audio-equalizer">
+            <span class="eq-bar"></span>
+            <span class="eq-bar"></span>
+            <span class="eq-bar"></span>
+          </div>
+          <span class="btn-label">SFX: Muted</span>
+        </button>
+
+        <a href="#standings" class="btn-primary" style="padding:8px 16px;font-size:12px">
+          <span>Live Paddock</span>
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <!-- ========================================================================
+       HERO SECTION WITH NEXT GP LIVE COUNTDOWN
+       ======================================================================== -->
+  <section class="hero-section" id="hero">
+    <div class="hero-glow-blob"></div>
+    <div class="container hero-grid">
+      <div class="hero-text-wrap">
+        <div class="hero-pill">
+          <span class="live-indicator-dot"></span>
+          <span class="hero-pill-text">Official Formula 1 World Championship</span>
+        </div>
+
+        <h1 class="hero-title">
+          THE PINNACLE OF <br>
+          <span class="title-accent">SPEED & GLORY</span>
+        </h1>
+
+        <p class="hero-description">
+          Welcome to the ultimate Formula 1 paddock experience. Engineered in signature black & red, featuring real driver telemetry, authentic team cars, genuine vector track layouts, and live championship standings.
+        </p>
+
+        <div class="hero-cta-group">
+          <a href="#standings" class="btn-primary">
+            <span>🏆 View Standings</span>
+          </a>
+          <a href="#tracks" class="btn-secondary">
+            <span>🗺️ Explore Circuits</span>
+          </a>
+          <button type="button" class="btn-secondary" id="heroRevBtn" title="Play V6 Turbo Hybrid Throttle Rev">
+            <span>🔊 Rev Engine</span>
+          </button>
+        </div>
+
+        <!-- Paddock Telemetry Highlights -->
+        <div class="telemetry-strip" style="border-top:none;padding-top:0;max-width:500px">
+          <div class="telemetry-item">
+            <span class="telemetry-val" style="color:var(--f1-red)">358 KM/H</span>
+            <span class="telemetry-lbl">Top Speed</span>
+          </div>
+          <div class="telemetry-item">
+            <span class="telemetry-val">5.4G</span>
+            <span class="telemetry-lbl">Max Lateral Load</span>
+          </div>
+          <div class="telemetry-item">
+            <span class="telemetry-val" style="color:var(--drs-green)">1.80 SEC</span>
+            <span class="telemetry-lbl">Record Pit Stop</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Live Grand Prix Countdown Card -->
+      <div class="countdown-card">
+        <div class="countdown-header">
+          <span class="next-gp-tag">Round 19 • Upcoming Grand Prix</span>
+          <span class="circuit-flag-badge">🇺🇸</span>
+        </div>
+
+        <h3 class="next-gp-title">United States Grand Prix</h3>
+        <p class="next-gp-meta">
+          <span>Circuit of the Americas, Austin, Texas</span> • <span>56 Laps</span>
+        </p>
+
+        <div class="countdown-timer-grid">
+          <div class="timer-box">
+            <div class="timer-num" id="timerDays">05</div>
+            <div class="timer-label">Days</div>
+          </div>
+          <div class="timer-box">
+            <div class="timer-num" id="timerHours">14</div>
+            <div class="timer-label">Hours</div>
+          </div>
+          <div class="timer-box">
+            <div class="timer-num" id="timerMins">32</div>
+            <div class="timer-label">Mins</div>
+          </div>
+          <div class="timer-box">
+            <div class="timer-num" id="timerSecs">48</div>
+            <div class="timer-label">Secs</div>
+          </div>
+        </div>
+
+        <div class="telemetry-strip">
+          <div class="telemetry-item">
+            <span class="telemetry-val">5.513 KM</span>
+            <span class="telemetry-lbl">Circuit Length</span>
+          </div>
+          <div class="telemetry-item">
+            <span class="telemetry-val">2 DRS Zones</span>
+            <span class="telemetry-lbl">Overtaking Zones</span>
+          </div>
+          <div class="telemetry-item">
+            <span class="telemetry-val" style="color:var(--f1-gold)">1:36.169</span>
+            <span class="telemetry-lbl">Lap Record</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========================================================================
+       SECTION 1: CHAMPIONSHIP STANDINGS (DRIVERS & CONSTRUCTORS)
+       ======================================================================== -->
+  <section class="section" id="standings">
+    <div class="container">
+      <div class="section-header">
+        <div class="section-badge">World Championship Fight</div>
+        <h2 class="section-title">CHAMPIONSHIP STANDINGS</h2>
+        <p class="section-subtitle">Real points, race wins, podium tallies, and recent Grand Prix form across the 2026 World Championship battlefield.</p>
+      </div>
+
+      <!-- Mode Toggle: Drivers vs Constructors -->
+      <div class="standings-tab-group">
+        <button type="button" class="standings-toggle-btn active" id="tabDriversStandings">
+          🏎️ Drivers' Championship (WDC)
+        </button>
+        <button type="button" class="standings-toggle-btn" id="tabConstructorsStandings">
+          🏁 Constructors' Championship (WCC)
+        </button>
+      </div>
+
+      <!-- Top 3 Podium Feature Cards -->
+      <div class="podium-highlight-grid" id="podiumCardsRow">
+        <!-- Rendered dynamically by JavaScript -->
+      </div>
+
+      <!-- Drivers' Standings View -->
+      <div id="driversStandingsView">
+        <div class="standings-table-container">
+          <table class="standings-table">
+            <thead>
+              <tr>
+                <th style="width:60px">Pos</th>
+                <th>Driver</th>
+                <th>Team</th>
+                <th>Wins</th>
+                <th>Podiums</th>
+                <th style="width:160px">Points</th>
+                <th>Gap</th>
+                <th>Recent Form</th>
+              </tr>
+            </thead>
+            <tbody id="driversStandingsTbody">
+              <!-- Rendered dynamically by JavaScript -->
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- Constructors' Standings View -->
+      <div id="constructorsStandingsView" style="display:none">
+        <div class="standings-table-container">
+          <table class="standings-table">
+            <thead>
+              <tr>
+                <th style="width:60px">Pos</th>
+                <th>Constructor</th>
+                <th>Driver Lineup</th>
+                <th>Power Unit</th>
+                <th>Wins</th>
+                <th>Podiums</th>
+                <th style="width:180px">Points</th>
+                <th>Gap</th>
+              </tr>
+            </thead>
+            <tbody id="constructorsStandingsTbody">
+              <!-- Rendered dynamically by JavaScript -->
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========================================================================
+       SECTION 2: TEAMS & CONSTRUCTORS
+       ======================================================================== -->
+  <section class="section" id="teams">
+    <div class="container">
+      <div class="section-header">
+        <div class="section-badge">Engineering & Paddock Powerhouses</div>
+        <h2 class="section-title">THE CONSTRUCTORS' GRID</h2>
+        <p class="section-subtitle">Ten elite works operations and independent racing titans. Featuring official liveries, technical specifications, and team leadership.</p>
+      </div>
+
+      <!-- Team Search Bar -->
+      <div class="filter-bar">
+        <div style="font-size:13px;font-weight:800;color:var(--text-secondary);text-transform:uppercase">
+          <span>10 Official Teams</span> • <span>Click Any Card For Deep Tech Specs</span>
+        </div>
+        <div class="search-box-wrapper">
+          <span class="search-icon">🔍</span>
+          <input type="text" class="search-input" id="teamSearchInput" placeholder="Filter teams, chassis, power unit...">
+        </div>
+      </div>
+
+      <!-- Teams Grid -->
+      <div class="teams-grid" id="teamsGrid">
+        <!-- Rendered dynamically by JavaScript -->
+      </div>
+    </div>
+  </section>
+
+  <!-- ========================================================================
+       SECTION 3: DRIVERS
+       ======================================================================== -->
+  <section class="section" id="drivers">
+    <div class="container">
+      <div class="section-header">
+        <div class="section-badge">Elite Gladiators</div>
+        <h2 class="section-title">THE PILOTS OF FORMULA 1</h2>
+        <p class="section-subtitle">Real driver portraits, racing numbers, career accolades, and telemetry radar skill indexes.</p>
+      </div>
+
+      <!-- Filter Pills & Search -->
+      <div class="filter-bar">
+        <div class="filter-pills">
+          <button type="button" class="filter-btn driver-filter-btn active" data-filter="all"><span>All Drivers</span></button>
+          <button type="button" class="filter-btn driver-filter-btn" data-filter="top5"><span>Top 5 Contenders</span></button>
+          <button type="button" class="filter-btn driver-filter-btn" data-filter="champions"><span>World Champions</span></button>
+          <button type="button" class="filter-btn driver-filter-btn" data-filter="winners"><span>Race Winners</span></button>
+        </div>
+
+        <div class="search-box-wrapper">
+          <span class="search-icon">🔍</span>
+          <input type="text" class="search-input" id="driverSearchInput" placeholder="Search driver, team, number...">
+        </div>
+      </div>
+
+      <!-- Drivers Grid -->
+      <div class="drivers-grid" id="driversGrid">
+        <!-- Rendered dynamically by JavaScript -->
+      </div>
+    </div>
+  </section>
+
+  <!-- ========================================================================
+       SECTION 4: ALL 24 TRACKS & OFFICIAL FOM CIRCUIT LAYOUTS
+       ======================================================================== -->
+  <section class="section" id="tracks">
+    <div class="container">
+      <div class="section-header">
+        <div class="section-badge">Complete 24-Round Calendar</div>
+        <h2 class="section-title">ALL 24 WORLD CHAMPIONSHIP TRACKS</h2>
+        <p class="section-subtitle">Explore the complete 24-race FIA Formula 1 World Championship calendar with official high-resolution FOM circuit layouts, track DNA, and race lap records.</p>
+      </div>
+
+      <!-- Circuits Showcase Layout -->
+      <div class="circuits-layout-grid">
+        <!-- Left: Scrollable Circuit Selector (All 24 Tracks) -->
+        <div class="circuit-list-card">
+          <div class="circuit-list-header">
+            <h3>24 World Circuits</h3>
+            <span style="font-size:11px;font-weight:900;color:var(--f1-red);background:rgba(225,6,0,0.12);padding:2px 8px;border-radius:3px">24 TRACKS</span>
+          </div>
+
+          <div style="padding:10px 14px;border-bottom:1px solid var(--border-subtle);background:var(--bg-carbon)">
+            <input type="text" class="search-input" id="circuitSearchInput" placeholder="Search round, track, country..." style="padding:8px 12px;font-size:12px">
+          </div>
+
+          <div class="circuit-scroll-container" id="circuitScrollList">
+            <!-- Rendered dynamically by JavaScript -->
+          </div>
+        </div>
+
+        <!-- Right: Official Circuit Viewer Command Center -->
+        <div class="circuit-featured-viewer">
+          <!-- Banner -->
+          <div class="circuit-banner-hero">
+            <div class="circuit-banner-details">
+              <div class="circuit-location-badge" id="circuitLocationBadge">🇧🇭 Sakhir, Bahrain • Round 01 of 24</div>
+              <h2 class="circuit-featured-title" id="circuitFeaturedTitle">Bahrain Grand Prix</h2>
+              <p class="circuit-official-name" id="circuitOfficialName">Bahrain International Circuit • First Held: 2004</p>
+            </div>
+
+            <div style="display:flex;align-items:center;gap:8px">
+              <span style="background:var(--bg-carbon);border:1px solid var(--border-subtle);color:var(--text-white);padding:8px 16px;border-radius:var(--radius-sm);font-size:12px;font-weight:800;letter-spacing:0.05em;text-transform:uppercase">
+                🏁 Official FOM Layout
+              </span>
+            </div>
+          </div>
+
+          <!-- Canvas / Graphic Display (Official FOM Map) -->
+          <div class="track-canvas-container" id="circuitCanvasContainer">
+            <!-- Rendered dynamically by JavaScript with Official FOM WebP Map -->
+          </div>
+
+          <!-- Key Metrics Dashboard Strip -->
+          <div class="circuit-specs-dashboard">
+            <div class="circuit-spec-tile">
+              <span class="spec-tile-value" id="circuitSpecLength">5.891 km</span>
+              <span class="spec-tile-label">Circuit Length</span>
+            </div>
+            <div class="circuit-spec-tile">
+              <span class="spec-tile-value" id="circuitSpecLaps">52 Laps</span>
+              <span class="spec-tile-label">Race Distance</span>
+            </div>
+            <div class="circuit-spec-tile">
+              <span class="spec-tile-value" id="circuitSpecTurns">18 Turns</span>
+              <span class="spec-tile-label">Corner Count</span>
+            </div>
+            <div class="circuit-spec-tile">
+              <span class="spec-tile-value" id="circuitSpecDrs" style="color:var(--drs-green)">2 Zones</span>
+              <span class="spec-tile-label">DRS Activations</span>
+            </div>
+          </div>
+
+          <!-- Deep-Dive Track Info -->
+          <div class="circuit-deepdive-body">
+            <div>
+              <h4 style="font-size:12px;font-weight:900;letter-spacing:0.1em;text-transform:uppercase;color:var(--text-muted);margin-bottom:8px">Circuit DNA & Characteristics</h4>
+              <p class="circuit-description-text" id="circuitDescription">
+                The birthplace of Formula 1. Silverstone is an ultra-fast temple of aerodynamic downforce. The high-speed sweep through Maggotts and Becketts subjects drivers to lateral loads in excess of 5G at over 280 km/h.
+              </p>
+              
+              <div style="margin-top:16px;display:flex;flex-wrap:wrap;gap:12px;font-size:12px">
+                <span style="background:var(--bg-carbon);padding:6px 12px;border-radius:4px;border:1px solid var(--border-subtle)">
+                  <strong>Type:</strong> <span id="circuitTypeVal">Permanent Circuit</span>
+                </span>
+                <span style="background:var(--bg-carbon);padding:6px 12px;border-radius:4px;border:1px solid var(--border-subtle)">
+                  <strong>Top Speed:</strong> <span id="circuitTopSpeedVal" style="color:var(--f1-red)">340 km/h</span>
+                </span>
+                <span style="background:var(--bg-carbon);padding:6px 12px;border-radius:4px;border:1px solid var(--border-subtle)">
+                  <strong>Throttle:</strong> <span id="circuitThrottleVal">76% Lap</span>
+                </span>
+              </div>
+            </div>
+
+            <div>
+              <!-- Lap Record Card -->
+              <div class="circuit-record-card">
+                <div class="record-header-label">Official Race Lap Record</div>
+                <div class="record-time-big" id="circuitLapRecordTime">1:27.097</div>
+                <div class="record-holder-driver" id="circuitLapRecordHolder">Max Verstappen (2020)</div>
+              </div>
+
+              <div style="margin-top:14px;background:var(--bg-carbon);border:1px solid var(--border-subtle);padding:14px;border-radius:var(--radius-md)">
+                <div style="font-size:10px;font-weight:800;text-transform:uppercase;color:var(--text-muted);margin-bottom:4px">Legendary Sectors</div>
+                <div style="font-size:12px;color:var(--text-white);font-weight:700" id="circuitIconicCorners">Maggotts, Becketts, Chapel, Stowe, Copse, Abbey</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========================================================================
+       SECTION 5: INTERACTIVE PIT TOOLS & SIMULATION
+       ======================================================================== -->
+  <section class="section" id="tools">
+    <div class="container">
+      <div class="section-header">
+        <div class="section-badge">Paddock Engineering & Reflex Lab</div>
+        <h2 class="section-title">PIT WALL TOOLS & SIMULATION</h2>
+        <p class="section-subtitle">Direct driver comparisons and real-time Grand Prix start reflex testing.</p>
+      </div>
+
+      <div class="tools-grid">
+        <!-- Tool 1: Head-to-Head Driver Comparison -->
+        <div class="tool-card">
+          <div class="tool-badge">Telemetry Analysis</div>
+          <h3 class="tool-title">HEAD-TO-HEAD COMPARISON</h3>
+          <p class="tool-desc">Select any two Formula 1 drivers to contrast their career victories, podiums, pole positions, and championship credentials.</p>
+
+          <div class="compare-selector-row">
+            <select class="compare-select" id="compareDriver1"></select>
+            <div class="compare-vs-badge">VS</div>
+            <select class="compare-select" id="compareDriver2"></select>
+          </div>
+
+          <div class="compare-metrics-list" id="compareMetricsList">
+            <!-- Rendered dynamically by JavaScript -->
+          </div>
+        </div>
+
+        <!-- Tool 2: Lights Out Reaction Timer -->
+        <div class="tool-card">
+          <div class="tool-badge">Starting Grid Reaction</div>
+          <h3 class="tool-title">LIGHTS OUT REACTION TEST</h3>
+          <p class="tool-desc">Test your reflexes against an F1 driver. Watch the 5 red lights illuminate, wait for them to extinguish, and react instantly!</p>
+
+          <div class="reaction-arena">
+            <div class="start-gantry-lights">
+              <div class="light-pod"></div>
+              <div class="light-pod"></div>
+              <div class="light-pod"></div>
+              <div class="light-pod"></div>
+              <div class="light-pod"></div>
+            </div>
+
+            <div class="reaction-prompt-text" id="reactionPromptText">
+              Press "Start Grid Sequence" to begin
+            </div>
+
+            <div class="reaction-result-time" id="reactionResultTime">--- ms</div>
+            <div class="reaction-benchmark-comment" id="reactionBenchmarkComment"></div>
+
+            <button type="button" class="btn-reaction-action" id="reactionActionBtn">
+              Start Grid Sequence
+            </button>
+          </div>
+        </div>
+
+        <!-- Tool 3: V6 Turbo Hybrid Acoustics & Dyno -->
+        <div class="tool-card">
+          <div class="tool-badge">Acoustics & Powertrain</div>
+          <h3 class="tool-title">V6 HYBRID DYNO SOUND</h3>
+          <p class="tool-desc">Experience the raw roar of the Formula 1 1.6L turbocharged V6 hybrid internal combustion unit with authentic track acoustics.</p>
+
+          <div class="dyno-display-box">
+            <div class="dyno-tach-wrap">
+              <div class="dyno-gauge">
+                <div class="dyno-needle" id="dynoTachNeedle"></div>
+                <div class="dyno-center-pin"></div>
+              </div>
+              <div class="dyno-readouts">
+                <span class="dyno-rpm-val" id="dynoRpmDisplay">3,800 RPM (Idle)</span>
+                <span class="dyno-rpm-sub">Max Limit: 15,000 RPM • 1.6L V6 Turbo</span>
+              </div>
+            </div>
+
+            <!-- Audio Progress Bar -->
+            <div class="dyno-audio-track">
+              <div class="dyno-audio-bar" id="dynoAudioProgressBar"></div>
+            </div>
+            <div class="dyno-audio-meta">
+              <span>Authentic F1 Engine Sound Clip</span>
+              <span id="dynoAudioTime">0.0s / 9.6s</span>
+            </div>
+
+            <button type="button" class="btn-primary" id="dynoRevBtn" style="width:100%;margin-top:20px;justify-content:center">
+              <span>🔊 Rev Dyno Engine</span>
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========================================================================
+       GLOBAL MODAL (DRIVER & TEAM DETAILS)
+       ======================================================================== -->
+  <div class="modal-overlay" id="f1Modal">
+    <div class="modal-content">
+      <button type="button" class="modal-close-btn" id="modalCloseBtn" aria-label="Close modal">✕</button>
+      <div class="modal-body" id="modalBody">
+        <!-- Injected dynamically by JavaScript -->
+      </div>
+    </div>
+  </div>
+
+  <!-- ========================================================================
+       SITE FOOTER
+       ======================================================================== -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <svg class="f1-logo-icon" viewBox="0 0 1600 400" xmlns="http://www.w3.org/2000/svg" role="img" style="height:22px;fill:var(--f1-red)">
+            <path d="M1367.21 312.501C1379.83 312.501 1390.25 316.71 1398.5 325.168C1406.75 333.626 1410.88 344.001 1410.88 356.334C1410.88 368.667 1406.79 379.043 1398.58 387.418C1390.38 395.793 1380 400.001 1367.38 400.001C1354.75 400.001 1344.25 395.792 1335.92 387.334C1327.54 378.876 1323.38 368.501 1323.38 356.168C1323.38 343.835 1327.54 333.459 1335.83 325.084C1344.13 316.709 1354.59 312.501 1367.21 312.501ZM1167.04 149.792H635.292C501.959 149.792 473.584 160.083 403.667 227.875H403.708L226.292 400H0L281.542 120.583C386.208 17 436.667 0 615.125 0H1320.04L1167.04 149.792ZM1144.21 173.708L1003.96 313.958H641.125C574.625 313.958 559.917 317.083 526.917 350.083L477 400H267.167L422.292 244.875C483.209 184 504.209 173.708 638.5 173.708H1144.21ZM1600 0L1198.92 400H950.875L1350.88 0H1600Z"/>
+          </svg>
+          <p>
+            APEX F1 — An immersive tribute to the FIA Formula One World Championship. Built with high-speed web standards, Web Audio synthesis, and dynamic vector telemetry.
+          </p>
+        </div>
+
+        <div class="footer-column">
+          <h4>Championship</h4>
+          <ul class="footer-links">
+            <li><a href="#standings">Drivers Standings</a></li>
+            <li><a href="#standings">Constructors Standings</a></li>
+            <li><a href="#hero">Next Grand Prix Ticker</a></li>
+            <li><a href="#tools">Head-to-Head Comparison</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-column">
+          <h4>Teams & Cars</h4>
+          <ul class="footer-links">
+            <li><a href="#teams">McLaren Formula 1</a></li>
+            <li><a href="#teams">Scuderia Ferrari HP</a></li>
+            <li><a href="#teams">Oracle Red Bull Racing</a></li>
+            <li><a href="#teams">Mercedes-AMG PETRONAS</a></li>
+            <li><a href="#teams">Aston Martin Aramco</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-column">
+          <h4>Iconic Circuits</h4>
+          <ul class="footer-links">
+            <li><a href="#tracks" onclick="selectCircuit('silverstone')">Silverstone (UK)</a></li>
+            <li><a href="#tracks" onclick="selectCircuit('monaco')">Monaco GP</a></li>
+            <li><a href="#tracks" onclick="selectCircuit('spa')">Spa-Francorchamps</a></li>
+            <li><a href="#tracks" onclick="selectCircuit('monza')">Monza (Italy)</a></li>
+            <li><a href="#tracks" onclick="selectCircuit('suzuka')">Suzuka (Japan)</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <div>&copy; 2026 APEX Formula 1 Experience. Unofficial tribute application. Formula 1, F1, and related marks are trademarks of Formula One Licensing B.V.</div>
+        <div style="display:flex;gap:16px">
+          <a href="#hero" style="color:var(--text-muted);text-decoration:none">Back to Top ↑</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Application Script -->
+  <script src="app.js"></script>
+</body>
+</html>
